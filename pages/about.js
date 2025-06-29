@@ -10,7 +10,7 @@ const teamMembers = [
     id: 1,
     name: 'Zephaniah Anyir',
     role: 'Photographer, Videographer, Editor & Graphic Designer',
-    image: '/Images/Zephaniah Anyir.jpg',
+    image: '/Images/ZephaniahAnyir.jpg',
     bio: 'Passionate visionary who founded ZAN E-lite Visuals with a commitment to creating exceptional visual content that tells compelling stories.',
     specialties: ['Photography', 'Videography', 'Video Editing', 'Graphic Design'],
     social: {
@@ -21,7 +21,7 @@ const teamMembers = [
     id: 2,
     name: 'Alvin Okochil',
     role: 'Photographer, Videographer & Editor',
-    image: '/Images/Alvin Okochil.jpg',
+    image: '/Images/AlvinOkochil.jpg',
     bio: 'Multi-talented creative professional specializing in capturing stunning visuals and bringing them to life through expert editing and post-production.',
     specialties: ['Photography', 'Videography', 'Video Editing', 'Post-Production'],
     social: {
@@ -32,7 +32,7 @@ const teamMembers = [
     id: 3,
     name: 'Harry Iduyo',
     role: 'Software Developer & Graphic Designer',
-    image: '/Images/Harry Iduyo.jpg',
+    image: '/Images/HarryIduyo.jpg',
     bio: 'Technology expert who combines software development skills with creative graphic design to enhance our digital presence and visual branding.',
     specialties: ['Software Development', 'Graphic Design', 'Web Development', 'Digital Solutions'],
     social: {
@@ -81,11 +81,21 @@ const timeline = [
 ];
 
 const stats = [
-  { id: 1, value: '50+', label: 'Happy Clients', icon: <FaUsers className="w-8 h-8" /> },
-  { id: 2, value: '100+', label: 'Projects Completed', icon: <FaCamera className="w-8 h-8" /> },
-  { id: 3, value: '8+', label: 'Months Experience', icon: <FaAward className="w-8 h-8" /> },
-  { id: 4, value: '5.0', label: 'Average Rating', icon: <FaStar className="w-8 h-8" /> }
+  { id: 1, value: '50+', label: 'Happy Clients', icon: 'FaUsers' },
+  { id: 2, value: '100+', label: 'Projects Completed', icon: 'FaCamera' },
+  { id: 3, value: '8+', label: 'Months Experience', icon: 'FaAward' },
+  { id: 4, value: '5.0', label: 'Average Rating', icon: 'FaStar' }
 ];
+
+const getStatIcon = (iconName) => {
+  const icons = {
+    FaUsers: <FaUsers className="w-8 h-8" />,
+    FaCamera: <FaCamera className="w-8 h-8" />,
+    FaAward: <FaAward className="w-8 h-8" />,
+    FaStar: <FaStar className="w-8 h-8" />
+  };
+  return icons[iconName];
+};
 
 const testimonials = [
   {
@@ -160,7 +170,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Who We Are</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-gradient">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gradient">
                 Capturing Life's Precious Moments
               </h2>
               <div className="space-y-6 text-gray-300 dark:text-gray-300 light:text-gray-700 text-lg leading-relaxed">
@@ -194,7 +204,7 @@ export default function About() {
                 whileHover={{ scale: 1.05 }}
               >
                 <div className="text-gold-400 flex justify-center mb-4 group-hover:animate-float">
-                  {stat.icon}
+                  {getStatIcon(stat.icon)}
                 </div>
                 <div className="text-3xl md:text-4xl font-bold mb-2 text-gradient">{stat.value}</div>
                 <div className="text-gray-400 dark:text-gray-400 light:text-gray-600 text-sm uppercase tracking-wider group-hover:text-white dark:group-hover:text-white light:group-hover:text-gray-800 transition-colors duration-300">{stat.label}</div>
@@ -215,7 +225,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Our Journey</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               Milestones & Achievements
             </h2>
           </motion.div>
@@ -270,7 +280,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Meet The Team</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               The Creative Minds
             </h2>
             <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 max-w-2xl mx-auto text-lg">
@@ -345,7 +355,7 @@ export default function About() {
             className="text-center mb-16"
           >
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Client Testimonials</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               What Our Clients Say
             </h2>
           </motion.div>

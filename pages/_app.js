@@ -77,6 +77,7 @@ export default function MyApp({ Component, pageProps }) {
         {/* Favicon and App Icons */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" href="/Images/logo.png" />
         
         {/* Disable automatic detection of possible phone numbers */}
         <meta name="format-detection" content="telephone=no" />

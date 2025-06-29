@@ -79,12 +79,17 @@ export default function Booking() {
   };
 
   const services = [
-    { value: 'wedding', label: 'Wedding Photography', price: 'From KSh 50,000' },
-    { value: 'portrait', label: 'Portrait Session', price: 'From KSh 15,000' },
-    { value: 'graduation', label: 'Graduation Photos', price: 'From KSh 8,000' },
-    { value: 'event', label: 'Event Coverage', price: 'From KSh 25,000' },
+    { value: 'wedding', label: 'Wedding Photography', price: 'From KSh 40,000' },
+    { value: 'portrait', label: 'Portrait Session', price: 'From KSh 7,000' },
+    { value: 'graduation', label: 'Graduation Photos', price: 'From KSh 5,000' },
+    { value: 'event', label: 'Event Coverage', price: 'From KSh 15,000' },
     { value: 'commercial', label: 'Commercial Photography', price: 'From KSh 20,000' },
-    { value: 'videography', label: 'Videography Services', price: 'From KSh 35,000' }
+    { value: 'videography', label: 'Videography Services', price: 'From KSh 25,000' },
+    { value: 'birthday', label: 'Birthday Shoots', price: 'From KSh 8,000' },
+    { value: 'babyshower', label: 'Baby Showers', price: 'From KSh 8,000' },
+    { value: 'ruracio', label: 'Ruracio', price: 'From KSh 25,000' },
+    { value: 'graphicdesign', label: 'Graphic Design', price: 'From KSh 500' },
+    { value: 'printing', label: 'Printing Services (Banners, Fliers, Photo Mounts)', price: 'From KSh 500' }
   ];
 
   const timeSlots = [
@@ -107,7 +112,7 @@ export default function Booking() {
       {/* Booking Form Section */}
       <section className="section-padding bg-gradient-to-b from-black to-gray-900 dark:from-black dark:to-gray-900 light:from-white light:to-gray-50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
             {/* Booking Form */}
             <div className="lg:col-span-2">
               <motion.div
@@ -115,13 +120,13 @@ export default function Booking() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="glass p-8 rounded-3xl shadow-2xl"
+                className="glass p-6 sm:p-8 rounded-3xl shadow-2xl"
               >
-                <div className="mb-8">
-                  <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-gradient">
+                <div className="mb-6 sm:mb-8">
+                  <h2 className="heading-md mb-3 sm:mb-4 text-gradient">
                     Book Your Session
                   </h2>
-                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 leading-relaxed">
+                  <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 leading-relaxed text-responsive">
                     Please provide as much detail as possible to help us prepare the perfect session for you.
                   </p>
                 </div>
@@ -130,30 +135,30 @@ export default function Booking() {
                   <motion.div 
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`mb-8 p-6 rounded-2xl flex items-start gap-4 ${
+                    className={`mb-6 sm:mb-8 p-4 sm:p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-3 sm:gap-4 ${
                       submitStatus.success 
                         ? 'bg-green-900/50 dark:bg-green-900/50 light:bg-green-100/90 text-green-300 dark:text-green-300 light:text-green-800 border border-green-500/30 dark:border-green-500/30 light:border-green-300' 
                         : 'bg-red-900/50 dark:bg-red-900/50 light:bg-red-100/90 text-red-300 dark:text-red-300 light:text-red-800 border border-red-500/30 dark:border-red-500/30 light:border-red-300'
                     }`}
                   >
-                    {submitStatus.success ? <FaCheckCircle className="w-6 h-6 mt-1 flex-shrink-0" /> : <FaExclamationTriangle className="w-6 h-6 mt-1 flex-shrink-0" />}
+                    {submitStatus.success ? <FaCheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 flex-shrink-0" /> : <FaExclamationTriangle className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 flex-shrink-0" />}
                     <div>
-                      <h4 className="font-bold mb-2">
+                      <h4 className="font-bold mb-1 sm:mb-2 text-sm sm:text-base">
                         {submitStatus.success ? 'Booking Submitted!' : 'Submission Error'}
                       </h4>
-                      <p>{submitStatus.message}</p>
+                      <p className="text-sm sm:text-base">{submitStatus.message}</p>
                     </div>
                   </motion.div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
                   {/* Personal Information */}
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-6 flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-sm">1</div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-gray-900 mb-4 sm:mb-6 flex items-center gap-3">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-xs sm:text-sm">1</div>
                       Personal Information
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid-responsive-2">
                       <div>
                         <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                           Full Name <span className="text-red-400">*</span>
@@ -164,7 +169,7 @@ export default function Booking() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                           placeholder="Your full name"
                         />
                       </div>
@@ -178,11 +183,11 @@ export default function Booking() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                           placeholder="your@email.com"
                         />
                       </div>
-                      <div className="md:col-span-2">
+                      <div className="sm:col-span-2">
                         <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                           Phone Number <span className="text-red-400">*</span>
                         </label>
@@ -192,7 +197,7 @@ export default function Booking() {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                           placeholder="+254 700 000000"
                         />
                       </div>
@@ -201,11 +206,11 @@ export default function Booking() {
 
                   {/* Service Details */}
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-6 flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-sm">2</div>
+                    <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-gray-900 mb-4 sm:mb-6 flex items-center gap-3">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-xs sm:text-sm">2</div>
                       Service Details
                     </h3>
-                    <div className="space-y-6">
+                    <div className="space-y-4 sm:space-y-6">
                       <div>
                         <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                           Service Type <span className="text-red-400">*</span>
@@ -215,7 +220,7 @@ export default function Booking() {
                           value={formData.service}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/10 dark:bg-gray-800 light:bg-white/90 border border-white/10 dark:border-white/20 light:border-gray-300 transition-all duration-300"
                         >
                           <option value="">Select a service</option>
                           {services.map((service) => (
@@ -226,7 +231,7 @@ export default function Booking() {
                         </select>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid-responsive-2">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                             Preferred Date <span className="text-red-400">*</span>
@@ -238,7 +243,7 @@ export default function Booking() {
                             onChange={handleChange}
                             required
                             min={new Date().toISOString().split('T')[0]}
-                            className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
                           />
                         </div>
                         <div>
@@ -249,7 +254,7 @@ export default function Booking() {
                             name="time"
                             value={formData.time}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
                           >
                             <option value="">Select time</option>
                             {timeSlots.map((time) => (
@@ -268,12 +273,12 @@ export default function Booking() {
                           name="location"
                           value={formData.location}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                          className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                           placeholder="Where will the session take place?"
                         />
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid-responsive-2">
                         <div>
                           <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                             Number of People
@@ -284,7 +289,7 @@ export default function Booking() {
                             value={formData.guests}
                             onChange={handleChange}
                             min="1"
-                            className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                             placeholder="How many people?"
                           />
                         </div>
@@ -296,57 +301,63 @@ export default function Booking() {
                             name="budget"
                             value={formData.budget}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                            className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
                           >
                             <option value="">Select budget range</option>
-                            <option value="under-20k">Under KSh 20,000</option>
-                            <option value="20k-50k">KSh 20,000 - 50,000</option>
-                            <option value="50k-100k">KSh 50,000 - 100,000</option>
-                            <option value="over-100k">Over KSh 100,000</option>
+                            <option value="Under KSh 15,000">Under KSh 15,000</option>
+                            <option value="KSh 15,000 - 30,000">KSh 15,000 - 30,000</option>
+                            <option value="KSh 30,000 - 50,000">KSh 30,000 - 50,000</option>
+                            <option value="KSh 50,000 - 100,000">KSh 50,000 - 100,000</option>
+                            <option value="Over KSh 100,000">Over KSh 100,000</option>
                           </select>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Additional Information */}
+                  {/* Additional Details */}
                   <div>
-                    <h3 className="text-xl font-bold text-white dark:text-white light:text-gray-900 mb-6 flex items-center gap-3">
-                      <div className="w-8 h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-sm">3</div>
-                      Additional Information
+                    <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white light:text-gray-900 mb-4 sm:mb-6 flex items-center gap-3">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gold-500 rounded-full flex items-center justify-center text-black font-bold text-xs sm:text-sm">3</div>
+                      Additional Details
                     </h3>
                     <div>
                       <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
-                        Special Requests or Details
+                        Special Requests or Additional Information
                       </label>
                       <textarea
                         name="message"
-                        rows="5"
+                        rows="4"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 resize-none"
-                        placeholder="Tell us about your vision, special requirements, or any other details that would help us prepare for your session..."
+                        className="w-full px-3 sm:px-4 py-3 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 resize-none no-zoom"
+                        placeholder="Tell us about any specific requirements, style preferences, or other details that would help us prepare for your session..."
                       ></textarea>
                     </div>
                   </div>
 
+                  <div className="text-center pt-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full btn btn-primary text-lg py-4 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                      className={`btn btn-primary text-responsive px-8 sm:px-12 py-3 sm:py-4 touch-target ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center gap-3">
-                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                        Submitting Booking...
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                          <span className="text-sm sm:text-base">Submitting Booking...</span>
                       </div>
                     ) : (
                       <>
                         <FaCalendarAlt className="mr-2" />
-                        Submit Booking Request
+                          <span>Submit Booking Request</span>
                       </>
                     )}
                   </button>
+                    <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 mt-3 sm:mt-4 px-4">
+                      We'll respond to your booking request within 24 hours
+                    </p>
+                  </div>
                 </form>
               </motion.div>
             </div>

@@ -39,7 +39,7 @@ export default function Services() {
             className="text-center mb-16"
           >
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">What We Offer</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               Professional Creative Services
             </h2>
           </motion.div>
@@ -148,7 +148,7 @@ export default function Services() {
             className="text-center mb-16"
           >
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Our Process</span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               How We Work
             </h2>
           </motion.div>
@@ -192,7 +192,7 @@ export default function Services() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               Ready to Book Your Session?
             </h2>
             <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 mb-8 max-w-2xl mx-auto">

@@ -22,7 +22,7 @@ function Error({ statusCode }) {
             <div className="text-8xl md:text-9xl font-bold text-gradient mb-8">
               {statusCode || 'Error'}
             </div>
-            <h1 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               {statusCode
                 ? `A ${statusCode} error occurred on server`
                 : 'An error occurred on client'}

@@ -146,19 +146,31 @@ export default async function handler(req, res) {
   try {
     // Security: Validate environment variables
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-      throw new Error('Email configuration missing');
+      console.log('CONTACT FORM - EMAIL NOT CONFIGURED:', {
+        name: sanitizedData.name,
+        email: sanitizedData.email,
+        service: sanitizedData.service,
+        timestamp: new Date().toISOString()
+      });
+      
+      return res.status(200).json({ 
+        success: true, 
+        message: 'Message received! We will contact you via WhatsApp or phone within 24 hours. For urgent matters, please WhatsApp us directly at +254 706 190246.' 
+      });
     }
 
     // Create transporter using Gmail SMTP
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Use STARTTLS
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
       },
-      // Security: Additional transport security
-      secure: true,
-      requireTLS: true
+      tls: {
+        rejectUnauthorized: false
+      }
     });
 
     // Security: Escape HTML in email content

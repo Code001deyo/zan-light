@@ -70,7 +70,7 @@ export default function Contact() {
 
   const contactInfo = [
     {
-      icon: <FaWhatsapp className="w-6 h-6" />,
+      icon: 'FaWhatsapp',
       title: 'WhatsApp',
       content: '+254 706 190246',
       link: 'https://wa.me/254706190246',
@@ -78,7 +78,7 @@ export default function Contact() {
       bgColor: 'bg-green-500/20'
     },
     {
-      icon: <FaEnvelope className="w-6 h-6" />,
+      icon: 'FaEnvelope',
       title: 'Email',
       content: 'zanelightvisuals@gmail.com',
       link: 'mailto:zanelightvisuals@gmail.com',
@@ -86,7 +86,7 @@ export default function Contact() {
       bgColor: 'bg-blue-500/20'
     },
     {
-      icon: <FaInstagram className="w-6 h-6" />,
+      icon: 'FaInstagram',
       title: 'Instagram',
       content: '@anyirzeph',
       link: 'https://www.instagram.com/anyirzeph?igsh=Z3ozMHJsb3JhYTdp',
@@ -94,7 +94,7 @@ export default function Contact() {
       bgColor: 'bg-pink-500/20'
     },
     {
-      icon: <FaMapMarkerAlt className="w-6 h-6" />,
+      icon: 'FaMapMarkerAlt',
       title: 'Location',
       content: 'Nairobi, Kenya',
       link: '#',
@@ -102,6 +102,16 @@ export default function Contact() {
       bgColor: 'bg-red-500/20'
     }
   ];
+
+  const getContactIcon = (iconName) => {
+    const icons = {
+      FaWhatsapp: <FaWhatsapp className="w-6 h-6" />,
+      FaEnvelope: <FaEnvelope className="w-6 h-6" />,
+      FaInstagram: <FaInstagram className="w-6 h-6" />,
+      FaMapMarkerAlt: <FaMapMarkerAlt className="w-6 h-6" />
+    };
+    return icons[iconName];
+  };
 
   return (
     <>
@@ -127,21 +137,21 @@ export default function Contact() {
       {/* Contact Cards */}
       <section className="section-padding bg-gradient-to-b from-black to-gray-900 dark:from-black dark:to-gray-900 light:from-white light:to-gray-50">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid-responsive-4">
             {contactInfo.map((item, index) => (
               <motion.div 
                 key={index}
-                className="glass p-6 rounded-2xl text-center hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-gray-100/80 transition-all duration-300 group"
+                className="glass p-4 sm:p-6 rounded-2xl text-center hover:bg-white/10 dark:hover:bg-white/10 light:hover:bg-gray-100/80 transition-all duration-300 group"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <div className={`w-16 h-16 rounded-full ${item.bgColor} flex items-center justify-center mx-auto mb-4 ${item.color} group-hover:animate-float`}>
-                  {item.icon}
+                <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full ${item.bgColor} flex items-center justify-center mx-auto mb-3 sm:mb-4 ${item.color} group-hover:animate-float`}>
+                  {getContactIcon(item.icon)}
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-white dark:text-white light:text-gray-900 group-hover:text-gold-400 dark:group-hover:text-gold-400 light:group-hover:text-gold-600 transition-colors duration-300">
+                <h3 className="text-lg sm:text-xl font-bold mb-2 text-white dark:text-white light:text-gray-900 group-hover:text-gold-400 dark:group-hover:text-gold-400 light:group-hover:text-gold-600 transition-colors duration-300">
                   {item.title}
                 </h3>
                 {item.link !== '#' ? (
@@ -149,12 +159,12 @@ export default function Contact() {
                     href={item.link} 
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 dark:text-gray-300 light:text-gray-700 hover:text-gold-400 dark:hover:text-gold-400 light:hover:text-gold-600 transition-colors duration-300 break-all"
+                    className="text-gray-300 dark:text-gray-300 light:text-gray-700 hover:text-gold-400 dark:hover:text-gold-400 light:hover:text-gold-600 transition-colors duration-300 break-all text-sm sm:text-base"
                   >
                     {item.content}
                   </a>
                 ) : (
-                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700">{item.content}</p>
+                  <p className="text-gray-300 dark:text-gray-300 light:text-gray-700 text-sm sm:text-base">{item.content}</p>
                 )}
               </motion.div>
             ))}
@@ -171,10 +181,10 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="text-center mb-12"
+              className="text-center mb-8 sm:mb-12"
             >
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">Send Us a Message</h2>
-              <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700">
+              <h2 className="heading-lg mb-4 sm:mb-6 text-gradient">Send Us a Message</h2>
+              <p className="text-responsive-lg text-gray-300 dark:text-gray-300 light:text-gray-700 px-4">
                 Your message will be sent directly to zanelightvisuals@gmail.com
               </p>
             </motion.div>
@@ -184,30 +194,30 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="glass p-8 md:p-12 rounded-3xl shadow-2xl"
+              className="glass p-6 sm:p-8 md:p-12 rounded-3xl shadow-2xl"
             >
               {submitStatus.message && (
                 <motion.div 
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className={`mb-8 p-6 rounded-2xl flex items-start gap-4 ${
+                  className={`mb-6 sm:mb-8 p-4 sm:p-6 rounded-2xl flex flex-col sm:flex-row items-start gap-3 sm:gap-4 ${
                     submitStatus.success 
                       ? 'bg-green-900/50 dark:bg-green-900/50 light:bg-green-100/90 text-green-300 dark:text-green-300 light:text-green-800 border border-green-500/30 dark:border-green-500/30 light:border-green-300' 
                       : 'bg-red-900/50 dark:bg-red-900/50 light:bg-red-100/90 text-red-300 dark:text-red-300 light:text-red-800 border border-red-500/30 dark:border-red-500/30 light:border-red-300'
                   }`}
                 >
-                  {submitStatus.success ? <FaCheckCircle className="w-6 h-6 mt-1 flex-shrink-0" /> : <FaExclamationTriangle className="w-6 h-6 mt-1 flex-shrink-0" />}
+                  {submitStatus.success ? <FaCheckCircle className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 flex-shrink-0" /> : <FaExclamationTriangle className="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 flex-shrink-0" />}
                   <div>
-                    <h4 className="font-bold mb-2">
+                    <h4 className="font-bold mb-1 sm:mb-2 text-sm sm:text-base">
                       {submitStatus.success ? 'Message Sent!' : 'Sending Error'}
                     </h4>
-                    <p>{submitStatus.message}</p>
+                    <p className="text-sm sm:text-base">{submitStatus.message}</p>
                   </div>
                 </motion.div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                <div className="grid-responsive-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                       Your Name <span className="text-red-400">*</span>
@@ -218,7 +228,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                       placeholder="John Doe"
                     />
                   </div>
@@ -232,13 +242,13 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                       placeholder="your@email.com"
                     />
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid-responsive-2">
                   <div>
                     <label className="block text-sm font-medium text-gray-300 dark:text-gray-300 light:text-gray-700 mb-2">
                       Phone Number
@@ -248,7 +258,7 @@ export default function Contact() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
                       placeholder="+254 700 000000"
                     />
                   </div>
@@ -260,7 +270,7 @@ export default function Contact() {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent text-white dark:text-white light:text-gray-900 bg-white/10 dark:bg-gray-800 light:bg-white/90 border border-white/10 dark:border-white/20 light:border-gray-300 transition-all duration-300"
                     >
                       <option value="">Select a service</option>
                       <option value="Wedding Photography">Wedding Photography</option>
@@ -269,6 +279,11 @@ export default function Contact() {
                       <option value="Event Coverage">Event Coverage</option>
                       <option value="Commercial Photography">Commercial Photography</option>
                       <option value="Videography">Videography</option>
+                      <option value="Birthday Shoots">Birthday Shoots</option>
+                      <option value="Baby Showers">Baby Showers</option>
+                      <option value="Ruracio">Ruracio</option>
+                      <option value="Graphic Design">Graphic Design</option>
+                      <option value="Printing Services">Printing Services (Banners, Fliers, Photo Mounts)</option>
                       <option value="Other">Other</option>
                     </select>
                   </div>
@@ -280,11 +295,11 @@ export default function Contact() {
                   </label>
                   <textarea
                     name="message"
-                    rows="6"
+                    rows="5"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 resize-none"
+                    className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 resize-none no-zoom"
                     placeholder="Tell us about your project, preferred dates, budget, or any questions you have..."
                   ></textarea>
                 </div>
@@ -293,21 +308,21 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`btn btn-primary text-lg px-12 py-4 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                    className={`btn btn-primary text-responsive px-8 sm:px-12 py-3 sm:py-4 touch-target ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center justify-center gap-3">
-                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                        Sending Message...
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                        <span className="text-sm sm:text-base">Sending Message...</span>
                       </div>
                     ) : (
                       <>
                         <FaEnvelope className="mr-2" />
-                        Send Message
+                        <span>Send Message</span>
                       </>
                     )}
                   </button>
-                  <p className="text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 mt-4">
+                  <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-400 light:text-gray-600 mt-3 sm:mt-4 px-4">
                     Message will be delivered directly to zanelightvisuals@gmail.com
                   </p>
                 </div>
@@ -326,24 +341,24 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="heading-md mb-4 sm:mb-6 text-gradient">
               Need Immediate Response?
             </h2>
-            <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 mb-8 max-w-2xl mx-auto">
+            <p className="text-responsive-lg text-gray-300 dark:text-gray-300 light:text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
               For urgent inquiries or quick questions, contact us directly
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="mobile-flex-col gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
               <a 
                 href="https://wa.me/254706190246" 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn bg-green-600 hover:bg-green-500 text-white text-lg px-8 py-4"
+                className="btn bg-green-600 hover:bg-green-500 text-white text-responsive px-6 sm:px-8 py-3 sm:py-4 touch-target mobile-full-width"
               >
                 <FaWhatsapp className="mr-2" /> WhatsApp Now
               </a>
               <a 
                 href="tel:+254706190246"
-                className="btn glass text-white dark:text-white light:text-gray-900 hover:bg-white/20 dark:hover:bg-white/20 light:hover:bg-gray-100/80 text-lg px-8 py-4"
+                className="btn glass text-white dark:text-white light:text-gray-900 hover:bg-white/20 dark:hover:bg-white/20 light:hover:bg-gray-100/80 text-responsive px-6 sm:px-8 py-3 sm:py-4 touch-target mobile-full-width"
               >
                 <FaPhone className="mr-2" /> Call Now
               </a>

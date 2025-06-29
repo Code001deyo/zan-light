@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaInstagram, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaArrowUp } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,7 +28,8 @@ export default function Footer() {
           >
             <div className="mb-6">
               <Link href="/" className="flex items-center space-x-2 group">
-                <span className="text-2xl font-serif font-bold text-white dark:text-white light:text-gray-900 group-hover:text-gold-400 dark:group-hover:text-gold-400 light:group-hover:text-gold-600 transition-colors duration-300">
+                <Image src="/Images/logo.png" alt="ZAN E-lite Visuals Logo" width={48} height={48} className="rounded-full inline-block align-middle" />
+                <span className="text-2xl font-bold text-white dark:text-white light:text-gray-900 group-hover:text-gold-400 dark:group-hover:text-gold-400 light:group-hover:text-gold-600 transition-colors duration-300">
                   ZAN E-lite
                 </span>
                 <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 group-hover:text-white dark:group-hover:text-white light:group-hover:text-gray-900 transition-colors duration-300">
@@ -118,7 +120,9 @@ export default function Footer() {
                 'Graduation Photos',
                 'Event Coverage',
                 'Commercial Work',
-                'Videography'
+                'Videography',
+                'Graphic Design',
+                'Printing Services (Banners, Fliers, Photo Mounts)'
               ].map((service, index) => (
                 <li key={index}>
                   <span className="text-gray-400 dark:text-gray-400 light:text-gray-600 hover:text-gold-400 dark:hover:text-gold-400 light:hover:text-gold-600 transition-colors duration-300 flex items-center gap-2 group cursor-pointer">

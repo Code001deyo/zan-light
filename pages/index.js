@@ -183,7 +183,6 @@ const HeroBgCarousel = memo(() => {
             alt={slides[current].alt}
             fill
             className="object-cover"
-            priority={current === 0}
             quality={75}
             sizes="100vw"
           />
@@ -202,7 +201,7 @@ const HeroBgCarousel = memo(() => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl"
           >
-            <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6 text-gradient">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient">
               {slides[current].title}
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90 mb-8">
@@ -263,13 +262,13 @@ export default function Home() {
       {/* About Section */}
       <section className="section-padding bg-gradient-to-b from-black to-gray-900">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative group"
+              className="relative group order-2 lg:order-1"
             >
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                 <div className="aspect-[4/5] relative">
@@ -289,12 +288,13 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
+              className="order-1 lg:order-2 text-center lg:text-left"
             >
-              <span className="text-gold-400 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Who We Are</span>
-              <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8 text-gradient">
+              <span className="text-gold-400 font-medium mb-3 sm:mb-4 inline-block tracking-wider uppercase text-xs sm:text-sm">Who We Are</span>
+              <h2 className="heading-lg mb-6 sm:mb-8 text-gradient">
                 Capturing Life's Precious Moments
               </h2>
-              <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+              <div className="space-y-4 sm:space-y-6 text-gray-300 text-responsive leading-relaxed">
                 <p>
                   <span className="text-gold-400 font-semibold">ZAN E-lite Visuals</span> is a Kenyan-based photography and videography company dedicated to creating high-quality visual content that captures stories, moments, and creativity.
                 </p>
@@ -302,7 +302,7 @@ export default function Home() {
                   Since launching on <span className="text-gold-400 font-medium">30th April 2024</span>, we blend artistic vision with modern technology to deliver visuals that are striking, timeless, and tailored to your needs.
                 </p>
               </div>
-              <Link href="/about" className="btn btn-primary mt-8 inline-flex items-center">
+              <Link href="/about" className="btn btn-primary mt-6 sm:mt-8 inline-flex items-center touch-target">
                 Learn More <FaArrowRight className="ml-2" />
               </Link>
             </motion.div>
@@ -313,7 +313,7 @@ export default function Home() {
       {/* Stats Section */}
       <section className="section-padding bg-gradient-to-r from-gray-900 via-black to-gray-900">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.id}
@@ -337,15 +337,15 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <span className="text-gold-400 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Our Work</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-gradient">
+            <span className="text-gold-400 font-medium mb-3 sm:mb-4 inline-block tracking-wider uppercase text-xs sm:text-sm">Our Work</span>
+            <h2 className="heading-lg mb-4 sm:mb-6 text-gradient">
               Featured Portfolio
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid-responsive-3 mb-8 sm:mb-12">
             {portfolioImages.map((src, i) => (
               <motion.div
                 key={src}
@@ -368,7 +368,7 @@ export default function Home() {
           </div>
           
           <div className="text-center">
-            <Link href="/portfolio" className="btn btn-primary text-lg px-8 py-4">
+            <Link href="/portfolio" className="btn btn-primary text-responsive px-6 sm:px-8 py-3 sm:py-4 touch-target">
               View Full Portfolio <FaArrowRight className="ml-2" />
             </Link>
           </div>
@@ -383,10 +383,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <span className="text-gold-400 font-medium mb-4 inline-block tracking-wider uppercase text-sm">Testimonials</span>
-            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6 text-gradient">
+            <span className="text-gold-400 font-medium mb-3 sm:mb-4 inline-block tracking-wider uppercase text-xs sm:text-sm">Testimonials</span>
+            <h2 className="heading-lg mb-4 sm:mb-6 text-gradient">
               What Our Clients Say
             </h2>
           </motion.div>
@@ -403,17 +403,17 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8 text-gradient">
+            <h2 className="heading-lg mb-6 sm:mb-8 text-gradient">
               Ready to Capture Your Story?
             </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p className="text-responsive-lg text-gray-300 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
               Get in touch today for bookings, inquiries, or to discuss your next project.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn btn-primary text-lg px-8 py-4">
+            <div className="mobile-flex-col gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
+              <Link href="/contact" className="btn btn-primary text-responsive px-6 sm:px-8 py-3 sm:py-4 touch-target mobile-full-width">
                 Contact Us <FaArrowRight className="ml-2" />
               </Link>
-              <a href="https://wa.me/254706190246" className="btn glass text-white hover:bg-white/20 text-lg px-8 py-4">
+              <a href="https://wa.me/254706190246" className="btn glass text-white hover:bg-white/20 text-responsive px-6 sm:px-8 py-3 sm:py-4 touch-target mobile-full-width">
                 WhatsApp
               </a>
             </div>

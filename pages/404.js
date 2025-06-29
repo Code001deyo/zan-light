@@ -19,7 +19,7 @@ export default function Custom404() {
             transition={{ duration: 0.8 }}
           >
             <div className="text-8xl md:text-9xl font-bold text-gradient mb-8">404</div>
-            <h1 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-6 text-white">
               Page Not Found
             </h1>
             <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">

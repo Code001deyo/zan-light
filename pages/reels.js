@@ -231,7 +231,7 @@ export default function Reels() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
               Ready to Create Your Own Reel?
             </h2>
             <p className="text-xl text-gray-300 dark:text-gray-300 light:text-gray-700 mb-8 max-w-2xl mx-auto">

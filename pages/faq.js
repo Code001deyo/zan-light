@@ -11,10 +11,20 @@ export default function FAQ() {
     setOpenItem(openItem === index ? null : index);
   };
 
+  const getFaqIcon = (iconName) => {
+    const icons = {
+      FaCamera: <FaCamera className="w-6 h-6" />,
+      FaDollarSign: <FaDollarSign className="w-6 h-6" />,
+      FaVideo: <FaVideo className="w-6 h-6" />,
+      FaClock: <FaClock className="w-6 h-6" />
+    };
+    return icons[iconName];
+  };
+
   const faqCategories = [
     {
       title: "General Services",
-      icon: <FaCamera className="w-6 h-6" />,
+      icon: "FaCamera",
       questions: [
         {
           question: "What photography and videography services do you offer?",
@@ -36,7 +46,7 @@ export default function FAQ() {
     },
     {
       title: "Booking & Pricing",
-      icon: <FaDollarSign className="w-6 h-6" />,
+      icon: "FaDollarSign",
       questions: [
         {
           question: "How much do your services cost?",
@@ -62,7 +72,7 @@ export default function FAQ() {
     },
     {
       title: "Event Coverage",
-      icon: <FaVideo className="w-6 h-6" />,
+      icon: "FaVideo",
       questions: [
         {
           question: "How long will you stay at my event?",
@@ -88,7 +98,7 @@ export default function FAQ() {
     },
     {
       title: "Delivery & Timeline",
-      icon: <FaClock className="w-6 h-6" />,
+      icon: "FaClock",
       questions: [
         {
           question: "How long until I receive my photos/videos?",
@@ -138,8 +148,8 @@ export default function FAQ() {
             <span className="text-gold-400 dark:text-gold-400 light:text-gold-600 font-medium mb-4 inline-block tracking-wider uppercase text-sm">
               Need Help?
             </span>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-gradient">
-              We're Here to Help
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient">
+              Frequently Asked Questions
             </h2>
             <p className="text-gray-400 dark:text-gray-400 light:text-gray-600 max-w-2xl mx-auto text-lg">
               Can't find what you're looking for? Contact us directly and we'll be happy to answer any questions.
@@ -158,7 +168,7 @@ export default function FAQ() {
               >
                 <div className="flex items-center mb-8">
                   <div className="text-gold-400 dark:text-gold-400 light:text-gold-600 mr-4">
-                    {category.icon}
+                    {getFaqIcon(category.icon)}
                   </div>
                   <h3 className="text-2xl font-bold text-white dark:text-white light:text-gray-900">
                     {category.title}

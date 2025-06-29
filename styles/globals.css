@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,6 +22,7 @@
     background: radial-gradient(ellipse at center, rgb(var(--background-end-rgb)) 0%, rgb(var(--background-start-rgb)) 100%);
     min-height: 100vh;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   * {
@@ -43,7 +46,7 @@
 
 @layer components {
   .btn {
-    @apply px-6 py-3 rounded-xl font-medium transition-all duration-150 ease-out transform-gpu;
+    @apply px-4 py-2 sm:px-6 sm:py-3 rounded-xl font-medium transition-all duration-150 ease-out transform-gpu text-sm sm:text-base;
   }
 
   .btn:hover {
@@ -67,11 +70,45 @@
   }
 
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-12 sm:py-16 md:py-20 lg:py-24;
   }
 
   .container-custom {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  /* Enhanced responsive typography */
+  .heading-xl {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+
+  .heading-lg {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+
+  .heading-md {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold;
+  }
+
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  /* Mobile-first grid patterns */
+  .grid-responsive-2 {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .grid-responsive-3 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
+  }
+
+  .grid-responsive-4 {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8;
   }
 }
 
@@ -96,5 +133,38 @@
 
   .transform-gpu {
     transform: translateZ(0);
+  }
+
+  /* Mobile-specific utilities */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-text-center {
+    @apply text-center sm:text-left;
+  }
+
+  .mobile-flex-col {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  .mobile-full-width {
+    @apply w-full sm:w-auto;
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Prevent text zoom on iOS */
+  .no-zoom {
+    font-size: 16px !important;
+  }
+
+  @media (max-width: 640px) {
+    .no-zoom {
+      font-size: 16px !important;
+    }
   }
 }

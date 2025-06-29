@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import Image from 'next/image';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,20 +47,7 @@ export default function Navbar({ theme, toggleTheme }) {
         <div className="flex justify-between items-center">
           <Link href="/" className="flex items-center space-x-2 group" onClick={handleLinkClick}>
             <div className="relative">
-              <span className={`text-2xl font-serif font-bold transition-colors duration-300 ${
-                theme === 'light' 
-                  ? 'text-gray-900 group-hover:text-gold-600' 
-                  : 'text-white group-hover:text-gold-400'
-              }`}>
-                ZAN E-lite
-              </span>
-              <span className={`ml-1 transition-colors duration-300 ${
-                theme === 'light' 
-                  ? 'text-gold-600 group-hover:text-gray-900' 
-                  : 'text-gold-400 group-hover:text-white'
-              }`}>
-                Visuals
-              </span>
+              <Image src="/Images/logo.png" alt="ZAN E-lite Visuals Logo" width={64} height={64} className="rounded-full" />
             </div>
           </Link>
 
@@ -75,7 +63,6 @@ export default function Navbar({ theme, toggleTheme }) {
                       ? 'text-gray-700 hover:text-gold-600' 
                       : 'text-white hover:text-gold-400'
                 }`}
-                prefetch={true}
               >
                 {link.name}
                 <span className={`absolute -bottom-1 left-0 h-0.5 transition-all duration-300 ${
@@ -89,7 +76,6 @@ export default function Navbar({ theme, toggleTheme }) {
             <Link
               href="/booking"
               className="btn btn-primary ml-4 text-sm"
-              prefetch={true}
             >
               Book Now
             </Link>
@@ -135,7 +121,6 @@ export default function Navbar({ theme, toggleTheme }) {
                         : 'text-white hover:bg-gray-800 hover:text-gold-400'
                   }`}
                   onClick={handleLinkClick}
-                  prefetch={true}
                 >
                   {link.name}
                 </Link>
@@ -144,7 +129,6 @@ export default function Navbar({ theme, toggleTheme }) {
                 href="/booking"
                 className="btn btn-primary text-center mt-2"
                 onClick={handleLinkClick}
-                prefetch={true}
               >
                 Book Now
               </Link>

@@ -229,7 +229,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
-                      placeholder="John Doe"
+                      placeholder="zeph anyir"
                     />
                   </div>
                   <div>
@@ -243,7 +243,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className="w-full px-3 sm:px-4 py-3 sm:py-4 glass rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent placeholder-gray-500 dark:placeholder-gray-500 light:placeholder-gray-400 text-white dark:text-white light:text-gray-900 bg-white/5 dark:bg-white/5 light:bg-white/90 border border-white/10 dark:border-white/10 light:border-gray-300 transition-all duration-300 no-zoom"
-                      placeholder="your@email.com"
+                      placeholder="zanelightvisuals@gmail.com"
                     />
                   </div>
                 </div>

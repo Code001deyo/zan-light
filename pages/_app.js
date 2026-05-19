@@ -68,6 +68,12 @@ export default function MyApp({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.whatsapp.com" />
         
+        {/* Critical image preloading */}
+        <link rel="preload" href="/Images/camera.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/Images/wedding-1.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/Images/graduation.jpg" as="image" type="image/jpeg" />
+        <link rel="preload" href="/Images/logo.png" as="image" type="image/png" />
+        
         {/* Security: Subresource Integrity for external resources */}
         <link 
           rel="dns-prefetch" 

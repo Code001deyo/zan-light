@@ -1,9 +1,46 @@
 import { useState, useEffect, useMemo, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaArrowRight, FaQuoteLeft, FaPlay } from 'react-icons/fa';
+import { FaArrowRight, FaQuoteLeft, FaPlay, FaImage } from 'react-icons/fa';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+
+const ImageWithFallback = memo(({ src, alt, className, fill, sizes, quality = 85, priority = false, placeholder = "blur", blurDataURL, loading, ...props }) => {
+  const [imgSrc, setImgSrc] = useState(src);
+  const [hasError, setHasError] = useState(false);
+
+  const handleError = () => {
+    setHasError(true);
+    setImgSrc('/Images/logo.png'); // Fallback to logo
+  };
+
+  if (hasError) {
+    return (
+      <div className={`${className} flex items-center justify-center bg-gray-800`} {...props}>
+        <FaImage className="text-gold-400 text-4xl opacity-50" />
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={imgSrc}
+      alt={alt}
+      className={className}
+      fill={fill}
+      sizes={sizes}
+      quality={quality}
+      priority={priority}
+      placeholder={placeholder}
+      blurDataURL={blurDataURL}
+      loading={loading}
+      onError={handleError}
+      {...props}
+    />
+  );
+});
+
+ImageWithFallback.displayName = 'ImageWithFallback';
 
 const stats = [
   { id: 1, value: 50, label: 'Happy Clients', suffix: '+' },
@@ -120,12 +157,15 @@ const TestimonialCarousel = memo(() => {
         >
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
-              <Image
+              <ImageWithFallback
                 src={testimonials[index].image}
                 alt={testimonials[index].name}
                 fill
                 className="object-cover"
                 sizes="96px"
+                quality={80}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
             <div className="flex-1 text-center md:text-left">
@@ -178,13 +218,16 @@ const HeroBgCarousel = memo(() => {
           transition={{ duration: 1 }}
           className="absolute inset-0 w-full h-full"
         >
-          <Image
+          <ImageWithFallback
             src={slides[current].src}
             alt={slides[current].alt}
             fill
             className="object-cover"
-            quality={75}
+            quality={85}
+            priority={current === 0}
             sizes="100vw"
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
           />
         </motion.div>
       </AnimatePresence>
@@ -252,6 +295,10 @@ export default function Home() {
         <meta name="description" content="Kenyan-based photography and videography company creating high-quality visual content since April 2024. Specializing in weddings, portraits, events, and professional media production." />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preload" href="/Images/camera.jpg" as="image" />
+        <link rel="preload" href="/Images/wedding-1.jpg" as="image" />
+        <link rel="preload" href="/Images/graduation.jpg" as="image" />
+        <link rel="preload" href="/Images/product.jpg" as="image" />
+        <link rel="preload" href="/Images/wedding.jpg" as="image" />
       </Head>
 
       {/* Hero Section */}
@@ -272,12 +319,15 @@ export default function Home() {
             >
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl">
                 <div className="aspect-[4/5] relative">
-                  <Image
+                  <ImageWithFallback
                     src="/Images/graduation.jpg"
                     alt="About ZAN E-lite Visuals"
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={85}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                   />
                 </div>
               </div>
@@ -356,12 +406,16 @@ export default function Home() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <Image
+                <ImageWithFallback
                   src={src}
                   alt={`Featured ${i+1}`}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                   sizes="(max-width: 768px) 100vw, 33vw"
+                  quality={85}
+                  loading={i === 0 ? "eager" : "lazy"}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                 />
               </motion.div>
             ))}
